@@ -1,11 +1,10 @@
 let checkCanvasLoaded = setInterval(() => {
     if (document.title === "Dashboard" || document.title.includes("Modules")) {
         clearInterval(checkCanvasLoaded);
-        checksToStars();
-        removeMainCalendar();
+        initOther();
     } else if (document.readyState === 'complete' && document.querySelectorAll(".icon-mark-as-read").length > 0) {
         clearInterval(checkCanvasLoaded);
-        init();
+        initCourse();
     }
 }, 100);
 
@@ -48,8 +47,27 @@ function removeMainCalendar() {
     unusedCalendar.remove()
 }
 
-function init() {
+function displayLogo() {
+    const logo = document.createElement("img")
+    logo.src = "https://github.com/ObieMunoz/canvas-update-chrome-extension/blob/main/images/favicon-32x32.png?raw=true"
+    logo.style.position = "fixed"
+    logo.style.top = "0"
+    logo.style.right = "0"
+    logo.style.zIndex = "9999"
+    logo.style.width = "32px"
+    logo.style.height = "32px"
+    document.body.appendChild(logo)
+}
+
+function initCourse() {
     updateToDoList();
     checksToStars();
     removeMainCalendar();
+    displayLogo();
+}
+
+function initOther() {
+    checksToStars();
+    removeMainCalendar();
+    displayLogo();
 }
