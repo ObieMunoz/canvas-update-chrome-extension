@@ -2,6 +2,8 @@
 # Canvas Update - Chrome Extension
 This extension for the Canvas website will replace the 'To Do List' on the right sidebar of any Canvas course with an updated list of hyperlinks leading directly to the assignments you need to complete.
 
+This repository contains testing code that will be cleaned up more at a future date once all components are properly working.
+
 ## Current Features
 - Replaces the "To Do" list within any Canvas course with a new list of direct links to any unfinished assignment.
 - Replaces all green checkmarks in Canvas with gold stars
