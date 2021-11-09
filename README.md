@@ -7,6 +7,7 @@ This repository contains testing code that will be cleaned up more at a future d
 ## Current Features
 - Replaces the "To Do" list within any Canvas course with a new list of direct links to any unfinished assignment.
 - Replaces all green checkmarks in Canvas with gold stars
+- Removes the 'Calendar' from the left sidebar as it is unused at Flatiron School.
 
 ## Installation Guide
 - Clone this repository to it's own folder on your computer.

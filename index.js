@@ -2,6 +2,7 @@ let checkCanvasLoaded = setInterval(() => {
     if (document.title === "Dashboard" || document.title.includes("Modules")) {
         clearInterval(checkCanvasLoaded);
         checksToStars();
+        removeMainCalendar();
     } else if (document.readyState === 'complete' && document.querySelectorAll(".icon-mark-as-read").length > 0) {
         clearInterval(checkCanvasLoaded);
         init();
@@ -15,7 +16,7 @@ function updateToDoList() {
     let username = scriptVariables.slice(scriptVariables.indexOf("display_name") + 15, scriptVariables.indexOf("avatar_image") - 3);
     if (username === "" || username === undefined || username.length > 30) {
         username = "Unknown";
-        console.warn("CANVAS+: Username detection error. Using default username:", username);
+        console.log("CANVAS+: Username detection error. Using default username:", username);
     }
     let toDoList = document.querySelector(".todo-list")
     if (incompleteTasks.length > 0) {
@@ -27,7 +28,8 @@ function updateToDoList() {
     }
     const newListContainer = document.createElement("div");
     newListContainer.style.backgroundColor = 'white';
-    newListContainer.style.border = '1px solid red';
+    newListContainer.style.border = '1px solid lightgray';
+    newListContainer.style.borderRadius = '5px';
     newListContainer.style.textAlign = 'center';
     newListContainer.innerHTML = `<strong>${username}'s REAL To Do List</strong><hr><ol style='text-align:left'>` + incompleteTaskElements.join("") + `</ol><em>Thanks for using Obie's Canvas Upgrade!<br><a href="https://github.com/ObieMunoz/canvas-update-chrome-extension/issues/new" target="_blank">Problems/Errors? Let me know!</a></em>`
     toDoList.replaceChildren(newListContainer)
@@ -41,7 +43,13 @@ function checksToStars() {
     })
 }
 
+function removeMainCalendar() {
+    const unusedCalendar = document.querySelector(".menu-item:nth-child(4)")
+    unusedCalendar.remove()
+}
+
 function init() {
     updateToDoList();
     checksToStars();
+    removeMainCalendar();
 }
