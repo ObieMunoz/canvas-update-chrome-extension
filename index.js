@@ -29,7 +29,7 @@ function updateToDoList() {
     const newListContainer = document.createElement("div");
     newListContainer.style.backgroundColor = 'white';
     newListContainer.style.border = '1px solid red';
-    newListContainer.innerHTML = `<strong>${username}'s REAL To Do List</strong><br><hr>` + incompleteTaskElements.join("<br>") + `<br><br><em>Thanks for using Obie's Canvas Upgrade!</em>`
+    newListContainer.innerHTML = `<strong>${username}'s REAL To Do List</strong><br><hr>` + incompleteTaskElements.join("<br>") + `<br><br><em>Thanks for using Obie's Canvas Upgrade!<br><a href="https://github.com/ObieMunoz/canvas-update-chrome-extension/issues/new" target="_blank">Problems/Errors? Let me know!</a></em>`
     toDoList.replaceChildren(newListContainer)
 }
 
