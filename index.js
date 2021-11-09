@@ -17,11 +17,10 @@ function updateToDoList() {
         username = "Unknown";
         console.warn("CANVAS+: Username detection error. Using default username:", username);
     }
-    let count = 0;
     let toDoList = document.querySelector(".todo-list")
     if (incompleteTasks.length > 0) {
         incompleteTasks.forEach(task => {
-            incompleteTaskElements.push(`${++count}. <a href=${task.parentNode.parentNode.querySelector("a").href}>${task.parentNode.parentNode.querySelector("a").innerText}</a>`)
+            incompleteTaskElements.push(`<li><a href=${task.parentNode.parentNode.querySelector("a").href}>${task.parentNode.parentNode.querySelector("a").innerText}</a></li>`)
         })
     } else {
         incompleteTaskElements.push(`You have no incomplete tasks!`)
@@ -29,7 +28,8 @@ function updateToDoList() {
     const newListContainer = document.createElement("div");
     newListContainer.style.backgroundColor = 'white';
     newListContainer.style.border = '1px solid red';
-    newListContainer.innerHTML = `<strong>${username}'s REAL To Do List</strong><br><hr>` + incompleteTaskElements.join("<br>") + `<br><br><em>Thanks for using Obie's Canvas Upgrade!<br><a href="https://github.com/ObieMunoz/canvas-update-chrome-extension/issues/new" target="_blank">Problems/Errors? Let me know!</a></em>`
+    newListContainer.style.textAlign = 'center';
+    newListContainer.innerHTML = `<strong>${username}'s REAL To Do List</strong><hr><ol style='text-align:left'>` + incompleteTaskElements.join("") + `</ol><em>Thanks for using Obie's Canvas Upgrade!<br><a href="https://github.com/ObieMunoz/canvas-update-chrome-extension/issues/new" target="_blank">Problems/Errors? Let me know!</a></em>`
     toDoList.replaceChildren(newListContainer)
 }
 
