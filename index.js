@@ -12,6 +12,7 @@ function updateToDoList() {
     let username = scriptVariables.slice(scriptVariables.indexOf("display_name") + 15, scriptVariables.indexOf("avatar_image") - 3);
     if (username === "" || username === undefined || username.length > 30) {
         username = "Unknown";
+        console.warn("CANVAS+: Username detection error. Using default username:", username);
     }
     let count = 0;
     let toDoList = document.querySelector(".todo-list")
