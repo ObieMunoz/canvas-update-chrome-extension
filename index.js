@@ -1,12 +1,15 @@
 let checkCanvasLoaded = setInterval(() => {
-    if (document.readyState === 'complete' && document.querySelectorAll(".icon-mark-as-read").length > 0) {
+    if (document.title === "Dashboard" || document.title.includes("Modules")) {
+        clearInterval(checkCanvasLoaded);
+        checksToStars();
+    } else if (document.readyState === 'complete' && document.querySelectorAll(".icon-mark-as-read").length > 0) {
         clearInterval(checkCanvasLoaded);
         init();
     }
 }, 100);
 
 function updateToDoList() {
-    const listTaskNames = [];
+    const incompleteTaskElements = [];
     let incompleteTasks = document.querySelectorAll(".icon-mark-as-read");
     let scriptVariables = document.getElementsByTagName("script")[3].text;
     let username = scriptVariables.slice(scriptVariables.indexOf("display_name") + 15, scriptVariables.indexOf("avatar_image") - 3);
@@ -18,15 +21,15 @@ function updateToDoList() {
     let toDoList = document.querySelector(".todo-list")
     if (incompleteTasks.length > 0) {
         incompleteTasks.forEach(task => {
-            listTaskNames.push(`${++count}. <a href=${task.parentNode.parentNode.querySelector("a").href}>${task.parentNode.parentNode.querySelector("a").innerText}</a>`)
+            incompleteTaskElements.push(`${++count}. <a href=${task.parentNode.parentNode.querySelector("a").href}>${task.parentNode.parentNode.querySelector("a").innerText}</a>`)
         })
     } else {
-        listTaskNames.push(`You have no incomplete tasks!`)
+        incompleteTaskElements.push(`You have no incomplete tasks!`)
     }
     const newListContainer = document.createElement("div");
     newListContainer.style.backgroundColor = 'white';
     newListContainer.style.border = '1px solid red';
-    newListContainer.innerHTML = `<strong>${username}'s REAL To Do List</strong><br><hr>` + listTaskNames.join("<br>") + `<br><br><em>Thanks for using Obie's Canvas Upgrade!</em>`
+    newListContainer.innerHTML = `<strong>${username}'s REAL To Do List</strong><br><hr>` + incompleteTaskElements.join("<br>") + `<br><br><em>Thanks for using Obie's Canvas Upgrade!</em>`
     toDoList.replaceChildren(newListContainer)
 }
 
