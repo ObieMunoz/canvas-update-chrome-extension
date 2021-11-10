@@ -7,6 +7,10 @@
     height: 32px;
 }
 
+#right-side .right-side-list li .icon-star {
+    color: goldenrod;
+}
+
 .canvas-update-todo-list-container {
     background-color: white;
     border: 1px solid lightgray;
