@@ -1,13 +1,17 @@
+function delay() {
+    return new Promise(resolve => setTimeout(resolve, 500));
+}
+
 let checkCanvasLoaded = setInterval(() => {
     if (document.title === "Dashboard" || document.title.includes("Modules")) {
         clearInterval(checkCanvasLoaded);
-        initOther();
-    } else if (document.title === "Quizzes") {
+        delay().then(() => initOther());
+    } else if (document.title === "Quizzes" && document.querySelectorAll(".ig-details").length > 0) {
         clearInterval(checkCanvasLoaded);
-        initQuizzes();
+        delay().then(() => initQuizzes());
     } else if (document.readyState === 'complete' && document.querySelectorAll(".icon-mark-as-read").length > 0) {
         clearInterval(checkCanvasLoaded);
-        initCourse();
+        delay().then(() => initCourse());
     }
 }, 100);
 
@@ -44,7 +48,6 @@ function checksToStars() {
 function removeMainCalendar() {
     const unusedCalendar = document.querySelector(".menu-item:nth-child(4)")
     unusedCalendar.children[0].innerText.includes("Calendar") ? unusedCalendar.remove() : console.log("CANVAS+: Unable to find Calendar module to remove.");
-    console.log(unusedCalendar)
 }
 
 function displayLogo() {
@@ -57,7 +60,7 @@ function displayLogo() {
 function quizGrader() {
     const quizGrades = document.querySelectorAll(".ig-details")
     quizGrades.forEach(grade => {
-        if (!grade.children[1]) grade.parentNode.parentNode.parentNode.style.backgroundColor = "lightblue";
+        if (!grade.children[1]) grade.parentNode.parentNode.parentNode.style.backgroundColor = "lightblue"
         else if (parseInt(grade.children[0].innerText) === parseInt(grade.children[1].innerText)) {
             grade.parentNode.parentNode.parentNode.style.backgroundColor = "lightgreen"
         } else if (parseInt(grade.children[0].innerText) < parseInt(grade.children[1].innerText)) {
