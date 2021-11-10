@@ -5,8 +5,10 @@ This extension for the Canvas website will replace the 'To Do List' on the right
 This repository contains testing code that will be cleaned up more at a future date once all components are properly working.
 
 ## Current Features
-- Replaces the "To Do" list within any Canvas course with a new list of direct links to any unfinished assignment.
-- Replaces all green checkmarks in Canvas with gold stars
+- Replaces the "To Do" list within any Canvas course.
+  - Inserts your name into the list header.
+  - Fills the list with direct links to the exact assignment you need to work on.
+- Replaces all green checkmarks in Canvas with gold stars.
 - Removes the 'Calendar' from the left sidebar as it is unused at Flatiron School.
 
 ## Installation Guide

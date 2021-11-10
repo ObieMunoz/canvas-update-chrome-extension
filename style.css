@@ -1,0 +1,23 @@
+.canvas-update-logo {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    width: 32px;
+    height: 32px;
+}
+
+.canvas-update-todo-list-container {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.icon-star {
+    color: goldenrod;
+}
+
+ol {
+    text-align: left;
+}

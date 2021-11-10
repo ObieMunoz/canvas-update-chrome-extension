@@ -26,11 +26,8 @@ function updateToDoList() {
         incompleteTaskElements.push(`You have no incomplete tasks!`)
     }
     const newListContainer = document.createElement("div");
-    newListContainer.style.backgroundColor = 'white';
-    newListContainer.style.border = '1px solid lightgray';
-    newListContainer.style.borderRadius = '5px';
-    newListContainer.style.textAlign = 'center';
-    newListContainer.innerHTML = `<strong>${username}'s REAL To Do List</strong><hr><ol style='text-align:left'>` + incompleteTaskElements.join("") + `</ol><em>Thanks for using Obie's Canvas Upgrade!<br><a href="https://github.com/ObieMunoz/canvas-update-chrome-extension/issues/new" target="_blank">Problems/Errors? Let me know!</a></em>`
+    newListContainer.className = "canvas-update-todo-list-container";
+    newListContainer.innerHTML = `<strong>${username}'s REAL To Do List</strong><hr><ol>` + incompleteTaskElements.join("") + `</ol><em>Thanks for using Obie's Canvas Upgrade!<br><a href="https://github.com/ObieMunoz/canvas-update-chrome-extension/issues/new" target="_blank">Problems/Errors? Let me know!</a></em>`
     toDoList.replaceChildren(newListContainer)
 }
 
@@ -38,7 +35,6 @@ function checksToStars() {
     const greenChecks = document.querySelectorAll('.icon-check')
     greenChecks.forEach(check => {
         check.className = "icon-star"
-        check.style.color = 'gold'
     })
 }
 
@@ -50,12 +46,7 @@ function removeMainCalendar() {
 function displayLogo() {
     const logo = document.createElement("img")
     logo.src = "https://github.com/ObieMunoz/canvas-update-chrome-extension/blob/main/images/favicon-32x32.png?raw=true"
-    logo.style.position = "fixed"
-    logo.style.top = "0"
-    logo.style.right = "0"
-    logo.style.zIndex = "9999"
-    logo.style.width = "32px"
-    logo.style.height = "32px"
+    logo.className = "canvas-update-logo"
     document.body.appendChild(logo)
 }
 
