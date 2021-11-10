@@ -10,6 +10,7 @@ This repository contains testing code that will be cleaned up more at a future d
   - Fills the list with direct links to the exact assignment you need to work on.
 - Replaces all green checkmarks in Canvas with gold stars.
 - Removes the 'Calendar' from the left sidebar as it is unused at Flatiron School.
+- Provides visual clues for your grades in the Quizzes section.
 
 ## Installation Guide
 - Clone this repository to it's own folder on your computer.
@@ -22,3 +23,4 @@ This repository contains testing code that will be cleaned up more at a future d
 
 ## Screenshots
 ![Canvas Upgrade](https://github.com/ObieMunoz/canvas-update-chrome-extension/blob/main/images/canvas_upgrade_screenshot.png?raw=true)
+![Canvas Upgrade](https://github.com/ObieMunoz/canvas-update-chrome-extension/blob/main/images/canvas_upgrade_quizGrader.png?raw=true)

@@ -60,6 +60,8 @@ function quizGrader() {
         if (!grade.children[1]) grade.parentNode.parentNode.parentNode.style.backgroundColor = "lightblue";
         else if (parseInt(grade.children[0].innerText) === parseInt(grade.children[1].innerText)) {
             grade.parentNode.parentNode.parentNode.style.backgroundColor = "lightgreen"
+        } else if (parseInt(grade.children[0].innerText) < parseInt(grade.children[1].innerText)) {
+            grade.parentNode.parentNode.parentNode.style.backgroundColor = "pink"
         }
     })
 }
