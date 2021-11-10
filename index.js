@@ -2,6 +2,9 @@ let checkCanvasLoaded = setInterval(() => {
     if (document.title === "Dashboard" || document.title.includes("Modules")) {
         clearInterval(checkCanvasLoaded);
         initOther();
+    } else if (document.title === "Quizzes") {
+        clearInterval(checkCanvasLoaded);
+        initQuizzes();
     } else if (document.readyState === 'complete' && document.querySelectorAll(".icon-mark-as-read").length > 0) {
         clearInterval(checkCanvasLoaded);
         initCourse();
@@ -40,7 +43,8 @@ function checksToStars() {
 
 function removeMainCalendar() {
     const unusedCalendar = document.querySelector(".menu-item:nth-child(4)")
-    unusedCalendar.remove()
+    unusedCalendar.children[0].innerText.includes("Calendar") ? unusedCalendar.remove() : console.log("CANVAS+: Unable to find Calendar module to remove.");
+    console.log(unusedCalendar)
 }
 
 function displayLogo() {
@@ -48,6 +52,16 @@ function displayLogo() {
     logo.src = "https://github.com/ObieMunoz/canvas-update-chrome-extension/blob/main/images/favicon-32x32.png?raw=true"
     logo.className = "canvas-update-logo"
     document.body.appendChild(logo)
+}
+
+function quizGrader() {
+    const quizGrades = document.querySelectorAll(".ig-details")
+    quizGrades.forEach(grade => {
+        if (!grade.children[1]) grade.parentNode.parentNode.parentNode.style.backgroundColor = "lightblue";
+        else if (parseInt(grade.children[0].innerText) === parseInt(grade.children[1].innerText)) {
+            grade.parentNode.parentNode.parentNode.style.backgroundColor = "lightgreen"
+        }
+    })
 }
 
 function initCourse() {
@@ -61,4 +75,10 @@ function initOther() {
     checksToStars();
     removeMainCalendar();
     displayLogo();
+}
+
+function initQuizzes() {
+    quizGrader();
+    displayLogo();
+    removeMainCalendar();
 }
