@@ -1,9 +1,9 @@
-function delay(timeout = 1500) {
-    return new Promise(resolve => setTimeout(resolve, timeout));
-}
-
 window.onload = () => {
     delay().then(init);
+}
+
+function delay(timeout = 1500) {
+    return new Promise(resolve => setTimeout(resolve, timeout));
 }
 
 function displayLogo() {
@@ -85,14 +85,16 @@ function quizGrader() {
 }
 
 function assignmentGrader() {
-    const scoreDisplays = document.querySelectorAll(".score-display")
-    if (scoreDisplays.length === 0) return;
-
-    for (score of scoreDisplays) {
-        const scoreText = score.textContent.trim().slice(0, -4).split("/")
-        if (scoreText[0] === "-") score.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.backgroundColor = "orange";
-        else if (parseInt(scoreText[0]) === parseInt(scoreText[1])) score.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.backgroundColor = "lightgreen"
-        else if (parseInt(scoreText[0]) < parseInt(scoreText[1])) score.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.backgroundColor = "lightpink"
+    const assignmentList = document.querySelectorAll(".assignment")
+    if (assignmentList.length === 0 || !document.title.includes("Assignments")) return;
+    for (assignment of assignmentList) {
+        const scoreDisplay = assignment.querySelector(".score-display")
+        if (scoreDisplay) {
+            const scores = scoreDisplay.textContent.trim().slice(0, -4).split("/")
+            if (scores[0] === "-") assignment.firstChild.style.backgroundColor = "orange";
+            else if (parseInt(scores[0]) === parseInt(scores[1])) assignment.firstChild.style.backgroundColor = "lightgreen"
+            else if (parseInt(scores[0]) < parseInt(scores[1])) assignment.firstChild.style.backgroundColor = "lightpink"
+        }
     }
 }
 
