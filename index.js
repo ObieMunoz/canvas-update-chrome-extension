@@ -1,4 +1,4 @@
-function delay(timeout = 500) {
+function delay(timeout = 1500) {
     return new Promise(resolve => setTimeout(resolve, timeout));
 }
 

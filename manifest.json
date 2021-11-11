@@ -2,8 +2,8 @@
     "manifest_version": 2,
     "name": "Canvas Upgrade",
     "author": "Obie Munoz Jr",
-    "description": "This extension for the Canvas website will replace the 'To Do List' on the right sidebar with an updated list of hyperlinks leading directly to the assignment you need to complete.",
-    "version": "0.0.0.4",
+    "description": "This extension is meant for use in conjunction with the Flatiron School's Canvas courseware. The extension provides enhanced functionality and visual aids.",
+    "version": "0.0.0.7",
     "icons": {
         "16": "./images/favicon-16x16.png",
         "32": "./images/favicon-32x32.png",
