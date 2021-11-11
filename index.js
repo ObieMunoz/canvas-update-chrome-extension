@@ -103,24 +103,3 @@ function init() {
     quizGrader();
     // assignmentGrader();
 }
-
-
-// function initCourse() {
-//     updateToDoList();
-//     checksToStars();
-//     removeMainCalendar();
-//     displayLogo();
-//     // parseScript();
-// }
-
-// function initOther() {
-//     checksToStars();
-//     removeMainCalendar();
-//     displayLogo();
-// }
-
-// function initQuizzes() {
-//     quizGrader();
-//     displayLogo();
-//     removeMainCalendar();
-// }
