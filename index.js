@@ -65,14 +65,18 @@ function removeMainCalendar() {
 }
 
 function quizGrader() {
-    console.log("CANVAS+: Grading quizzes.")
-    const quizGrades = document.querySelectorAll(".ig-details")
-    quizGrades.forEach(grade => {
-        if (!grade.children[1]) grade.parentNode.parentNode.parentNode.style.backgroundColor = "lightblue"
-        else if (parseInt(grade.children[0].innerText) === parseInt(grade.children[1].innerText)) {
-            grade.parentNode.parentNode.parentNode.style.backgroundColor = "lightgreen"
-        } else if (parseInt(grade.children[0].innerText) < parseInt(grade.children[1].innerText)) {
-            grade.parentNode.parentNode.parentNode.style.backgroundColor = "pink"
+    const quizList = document.querySelectorAll(".quiz")
+    if (quizList.length === 0 || document.title !== "Quizzes") return;
+
+    quizList.forEach(quiz => {
+        const grade = quiz.querySelector(".ig-details").children
+        if (grade.length === 2) {
+            const yourScore = parseInt(grade[0].innerText)
+            const topScore = parseInt(grade[1].innerText)
+            if (yourScore === topScore) quiz.firstChild.style.backgroundColor = "lightgreen"
+            else if (yourScore < topScore) quiz.firstChild.style.backgroundColor = "lightpink"
+        } else {
+            quiz.firstChild.style.backgroundColor = "lightblue"
         }
     })
 }
@@ -96,7 +100,7 @@ function init() {
     removeMainCalendar();
     updateToDoList();
     checksToStars();
-    // quizGrader();
+    quizGrader();
     // assignmentGrader();
 }
 
