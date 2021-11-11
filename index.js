@@ -1,5 +1,5 @@
-function delay() {
-    return new Promise(resolve => setTimeout(resolve, 500));
+function delay(timeout = 500) {
+    return new Promise(resolve => setTimeout(resolve, timeout));
 }
 
 window.onload = () => {
@@ -82,17 +82,15 @@ function quizGrader() {
 }
 
 function assignmentGrader() {
-    console.log("CANVAS+: Grading assignments.")
     const scoreDisplays = document.querySelectorAll(".score-display")
-    const scores = scoreDisplays.forEach(score => {
-        score.textContent.trim().slice(0, -4).split("/")
-    })
-    const gradedScores = scores.forEach(score => {
-        if (score[0] === "-") return "Ungraded"
-        else if (score[0] === score[1]) return "Perfect"
-        else if (score[0] < score[1]) return "Imperfect"
-    })
-    console.log(gradedScores)
+    if (scoreDisplays.length === 0) return;
+
+    for (score of scoreDisplays) {
+        const scoreText = score.textContent.trim().slice(0, -4).split("/")
+        if (scoreText[0] === "-") score.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.backgroundColor = "orange";
+        else if (parseInt(scoreText[0]) === parseInt(scoreText[1])) score.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.backgroundColor = "lightgreen"
+        else if (parseInt(scoreText[0]) < parseInt(scoreText[1])) score.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.backgroundColor = "lightpink"
+    }
 }
 
 function init() {
@@ -101,5 +99,5 @@ function init() {
     updateToDoList();
     checksToStars();
     quizGrader();
-    // assignmentGrader();
+    delay(2000).then(assignmentGrader);
 }
