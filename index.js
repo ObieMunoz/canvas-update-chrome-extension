@@ -51,7 +51,7 @@ function updateToDoList() {
 }
 
 function checksToStars() {
-    const greenChecks = document.querySelectorAll("[title='Completed']");
+    const greenChecks = document.querySelectorAll(".icon-check");
     if (greenChecks.length === 0) return;
 
     greenChecks.forEach(check => {
@@ -60,9 +60,8 @@ function checksToStars() {
 }
 
 function removeMainCalendar() {
-    console.log("CANVAS+: Removing main calendar.")
-    const unusedCalendar = document.querySelector(".menu-item:nth-child(4)")
-    unusedCalendar.children[0].innerText.includes("Calendar") ? unusedCalendar.remove() : console.log("CANVAS+: Unable to find Calendar module to remove.");
+    const calendar = document.getElementById("global_nav_calendar_link").parentNode
+    if (calendar) calendar.remove()
 }
 
 function quizGrader() {
@@ -94,7 +93,7 @@ function assignmentGrader() {
 
 function init() {
     displayLogo();
-    // removeMainCalendar();
+    removeMainCalendar();
     updateToDoList();
     checksToStars();
     // quizGrader();
