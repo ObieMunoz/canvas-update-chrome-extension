@@ -7,10 +7,13 @@ window.onload = () => {
 }
 
 function displayLogo() {
+    const link = document.createElement("a");
     const logo = document.createElement("img")
     logo.src = "https://github.com/ObieMunoz/canvas-update-chrome-extension/blob/main/images/favicon-32x32.png?raw=true"
-    logo.className = "canvas-update-logo"
-    document.body.appendChild(logo)
+    link.className = "canvas-update-logo"
+    link.href = "https://github.com/ObieMunoz/canvas-update-chrome-extension"
+    link.appendChild(logo)
+    document.body.appendChild(link)
 }
 
 function updateToDoList() {
